@@ -1,7 +1,7 @@
 const sounds = {};
-let speed = 60;
-let duration = 10000;
-let volume = 0.3;
+let speed = 180;
+let duration = 180000;
+let volume = 1;
 
 function start() {
     //ßperformance_trick();
