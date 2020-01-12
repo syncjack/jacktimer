@@ -81,7 +81,7 @@ function durationSliderChanged(init) {
     } else {
         document.getElementById("durationSlider").value = duration;
     }
-    document.getElementById("durationSliderOutput").textContent = Math.round(duration / 1000) + "s";
+    document.getElementById("durationSliderOutput").textContent = Math.round(duration / 1000);
 }
 
 
