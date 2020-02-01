@@ -2,10 +2,15 @@ const sounds = {};
 let speed = 180;
 let duration = 180000;
 let volume = 1;
+let stopLoop = false;
 
 function start() {
     //ßperformance_trick();
     asyncLoop(new Date());
+}
+
+function stop() {
+    stopLoop = true;
 }
 
 function performance_trick() {
@@ -19,7 +24,6 @@ function performance_trick() {
 }
 
 function playDrum() {
-    console.log("beat");
     if (!sounds.drum) {
         sounds.drum = new Howl({
             src: ['kick-drum.wav'],
@@ -31,7 +35,6 @@ function playDrum() {
 }
 
 function playHandsOff() {
-    console.log("handsoff");
     if (!sounds.handsoff) {
         sounds.handsoff = new Howl({
             src: ['handsoff.mp3'],
@@ -47,7 +50,11 @@ function asyncLoop(startTime) {
     setTimeout(function () {
         const newTimeStamp = new Date();
         if (newTimeStamp.getTime() - startTime.getTime() < duration) {
-            asyncLoop(startTime);
+            if (!stopLoop) {
+                asyncLoop(startTime);
+            } else {
+                stopLoop = false;
+            }
         } else {
             playHandsOff();
         }
